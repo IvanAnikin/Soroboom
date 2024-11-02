@@ -7,7 +7,7 @@ window.onload = function(){
   document.getElementById("sendEmailBtn4").addEventListener("click", sendForm(4));
   document.getElementById("sendEmailBtn5").addEventListener("click", sendForm(5));
 
-  async function sendForm(elementId) {
+  function sendForm(elementId) {
     const name = document.getElementById(`'senderName${elementId}'`);
     const phone = document.getElementById(`'senderPhone${elementId}'`);
     const email = document.getElementById(`'senderEmail${elementId}'`);
