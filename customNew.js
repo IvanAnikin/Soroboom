@@ -1,34 +1,16 @@
 
 window.onload = function(){
 
-  const SendFormBtn1 = document.getElementById("sendEmailBtn1");
-  const SendFormBtn2 = document.getElementById('sendEmailBtn2');
-  const SendFormBtn3 = document.getElementById('sendEmailBtn3');
-  const SendFormBtn4 = document.getElementById('sendEmailBtn4');
-  const SendFormBtn5 = document.getElementById('sendEmailBtn5');
+  document.getElementById("sendEmailBtn1").addEventListener("click", sendForm(1));
+  document.getElementById("sendEmailBtn2").addEventListener("click", sendForm(2));
+  document.getElementById("sendEmailBtn3").addEventListener("click", sendForm(3));
+  document.getElementById("sendEmailBtn4").addEventListener("click", sendForm(4));
+  document.getElementById("sendEmailBtn5").addEventListener("click", sendForm(5));
 
-  SendFormBtn1.onclick = function() {
-    console.log('sf1');
-    sendForm(document.getElementById('senderName'), document.getElementById('senderPhone'), document.getElementById('senderEmail'));
-  };
-  SendFormBtn2.onclick = function() {
-    console.log('sf2');
-    sendForm(document.getElementById('senderName2'), document.getElementById('senderPhone2'), document.getElementById('senderEmail2'));
-  };
-  SendFormBtn3.onclick = function() {
-    console.log('sf3');
-    sendForm(document.getElementById('senderNam3'), document.getElementById('senderPhone3'), document.getElementById('senderEmail3'));
-  };
-  SendFormBtn4.onclick = function() {
-    console.log('sf4');
-    sendForm(document.getElementById('senderNam4'), document.getElementById('senderPhone4'), document.getElementById('senderEmail4'));
-  };
-  SendFormBtn5.onclick = function() {
-    console.log('sf5');
-    sendForm(document.getElementById('senderName5'), document.getElementById('senderPhone5'), document.getElementById('senderEmail5'));
-  };
-
-  async function sendForm(name, phone, email) {
+  async function sendForm(elementId) {
+    const name = document.getElementById(`'senderName${elementId}'`);
+    const phone = document.getElementById(`'senderPhone${elementId}'`);
+    const email = document.getElementById(`'senderEmail${elementId}'`);
     console.log(name, '\n', phone, '\n' , email);
     const data = JSON.stringify({
       "Messages": [{
