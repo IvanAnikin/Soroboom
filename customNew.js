@@ -1,52 +1,4 @@
-
 window.onload = function(){
-
-  document.getElementById("sendEmailBtn1").addEventListener("click", sendForm(1));
-  document.getElementById("sendEmailBtn2").addEventListener("click", sendForm(2));
-  document.getElementById("sendEmailBtn3").addEventListener("click", sendForm(3));
-  document.getElementById("sendEmailBtn4").addEventListener("click", sendForm(4));
-  document.getElementById("sendEmailBtn5").addEventListener("click", sendForm(5));
-
-  function sendForm(elementId) {
-    const name = document.getElementById(`'senderName${elementId}'`);
-    const phone = document.getElementById(`'senderPhone${elementId}'`);
-    const email = document.getElementById(`'senderEmail${elementId}'`);
-    console.log(name, '\n', phone, '\n' , email);
-    const data = JSON.stringify({
-      "Messages": [{
-        "From": {"Email": email, "Name": name},
-        "To": [{"Email": 'danila.s.anikin@gmail.com', "Name": 'Soroboom Praha'}],
-        "Subject": 'Soroboom form',
-        "TextPart": `"Name: ${name} \n Phone number: ${phone} \n Email: ${email}"`
-      }]
-    });
-
-    const config = {
-      method: 'post',
-      url: 'https://api.mailjet.com/v3.1/send',
-      data: data,
-      headers: {'Content-Type': 'application/json'},
-      auth: {username: 'beda647891789a0b751652e67f556108', password: 'e00806db18973c1ba4dd4a14545f21c4'},
-    };
-
-    return axios(config)
-      .then(function () {
-        const loc = window.location.pathname;
-        if(loc == '/') {
-          window.location.pathname = '/diky.html';
-        } else if (loc == '/ru.html') {
-          window.location.pathname = '/spasibo.html';
-        } else if (loc == '/uk.html') {
-          window.location.pathname = '/dyakuyemo.html';
-        } else if (loc == 'en.html') {
-          window.location.pathname = '/thankingPage.html';
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   GetCallButton1 = document.getElementById("formButton");  //getcallbtn1
   GetCallForm1 = document.getElementById("form");  //getcallform1
   GetCallButton2 = document.getElementById("formButtonPC"); //getcallbtn2 
@@ -64,7 +16,7 @@ window.onload = function(){
 
   timetableButton1 = document.getElementById("scrollTimetable1");
   timetableButton2 = document.getElementById("scrollTimetable2");
-  timetableButton3 = document.getElementById("scrollTimetable3");
+  // timetableButton3 = document.getElementById("scrollTimetable3");
 
   timetableButton1.onclick = function () {
     location.href = "https://schedule.soroboom.cz/timetable";
@@ -72,9 +24,9 @@ window.onload = function(){
   timetableButton2.onclick = function () {
       location.href = "https://schedule.soroboom.cz/timetable";
   };
-  timetableButton3.onclick = function () {
-      location.href = "https://schedule.soroboom.cz/timetable";
-  };
+  // timetableButton3.onclick = function () {
+  //     location.href = "https://schedule.soroboom.cz/timetable";
+  // };
 
   formatss = document.getElementById("formatsOfEducation");
   slidespages = document.getElementById("slideImagesPage");
