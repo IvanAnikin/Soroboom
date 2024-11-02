@@ -2,7 +2,6 @@
 window.onload = function(){
 
 
-
   GetCallButton1 = document.getElementById("formButton");  //getcallbtn1
   GetCallForm1 = document.getElementById("form");  //getcallform1
   GetCallButton2 = document.getElementById("formButtonPC"); //getcallbtn2 
