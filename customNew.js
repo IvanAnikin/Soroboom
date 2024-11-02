@@ -127,10 +127,8 @@ window.onload = function(){
   };
 }
 
-
-
-
 async function sendForm(name, phone, email) {
+  console.log(name, '\n', phone, '\n' , email);
   const data = JSON.stringify({
     "Messages": [{
       "From": {"Email": email, "Name": name},
@@ -149,7 +147,7 @@ async function sendForm(name, phone, email) {
   };
 
   return axios(config)
-    .then(function (response) {
+    .then(function () {
       const loc = window.location.pathname;
       if(loc == '/') {
         window.location.pathname = '/diky.html';
