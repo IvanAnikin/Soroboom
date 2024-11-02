@@ -130,38 +130,40 @@ window.onload = function(){
 
 
 
+async function sendForm(name, phone, email) {
+  const data = JSON.stringify({
+    "Messages": [{
+      "From": {"Email": email, "Name": name},
+      "To": [{"Email": 'danila.s.anikin@gmail.com', "Name": 'Soroboom Praha'}],
+      "Subject": 'Soroboom form',
+      "TextPart": `"Name: ${name} \n Phone number: ${phone} \n Email: ${email}"`
+    }]
+  });
 
+  const config = {
+    method: 'post',
+    url: 'https://api.mailjet.com/v3.1/send',
+    data: data,
+    headers: {'Content-Type': 'application/json'},
+    auth: {username: 'beda647891789a0b751652e67f556108', password: 'e00806db18973c1ba4dd4a14545f21c4'},
+  };
 
+  return axios(config)
+    .then(function (response) {
+      const loc = window.location.pathname;
+      if(loc == '/') {
+        window.location.pathname = '/diky.html';
+      } else if (loc == '/ru.html') {
+        window.location.pathname = '/spasibo.html';
+      } else if (loc == '/uk.html') {
+        window.location.pathname = '/dyakuyemo.html';
+      } else if (loc == 'en.html') {
+        window.location.pathname = '/thankingPage.html';
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-function sendForm(){
-
-  // var subject = $("#subject").val();
-  //     var fname = $("#fname").val();
-  //     var message = $("#message").val();
-  //     var button = $("#submit").val();
-  //     var dataString = 'subject=' + subject + '&fname=' + fname + '&message=' + message + '&button=' + button;
-
-  //     //validation 
-  //     if (fname == '' ||`` subject == '' ||  message == '') { //if you are use other form validation scripts remove the if statement 
-  //         alert("Please fill all fields");
-  //     }
-  //     // AJAX Code To Submit Form.
-  //     else {
-  //         $('#loader').show();
-  //         $.ajax({
-  //             type: "POST",
-  //             url: "send-mailer.php",
-  //             data: dataString,
-  //             cache: false,
-  //             success: function(result) {
-  //                 $('#loader').hide();
-  //                 $('#response').html(result).fadeIn();
-  //                 $("#contact_form")[0].reset();
-  //                 $('#response').fadeOut(3000).delay(400);
-
-
-  //             }
-  //         });
-  //     }
 }
 
