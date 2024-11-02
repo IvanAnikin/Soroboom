@@ -1,6 +1,64 @@
 
 window.onload = function(){
 
+  const SendFormBtn1 = document.getElementById('sendEmailBtn1');
+  const SendFormBtn2 = document.getElementById('sendEmailBtn2');
+  const SendFormBtn3 = document.getElementById('sendEmailBtn3');
+  const SendFormBtn4 = document.getElementById('sendEmailBtn4');
+  const SendFormBtn5 = document.getElementById('sendEmailBtn5');
+
+  SendFormBtn1.onclick = function() {
+    sendForm(document.getElementById('senderName'), document.getElementById('senderPhone'), document.getElementById('senderEmail'));
+  };
+  SendFormBtn2.onclick = function() {
+    sendForm(document.getElementById('senderName2'), document.getElementById('senderPhone2'), document.getElementById('senderEmail2'));
+  };
+  SendFormBtn3.onclick = function() {
+    sendForm(document.getElementById('senderNam3'), document.getElementById('senderPhone3'), document.getElementById('senderEmail3'));
+  };
+  SendFormBtn4.onclick = function() {
+    sendForm(document.getElementById('senderNam4'), document.getElementById('senderPhone4'), document.getElementById('senderEmail4'));
+  };
+  SendFormBtn5.onclick = function() {
+    sendForm(document.getElementById('senderName5'), document.getElementById('senderPhone5'), document.getElementById('senderEmail5'));
+  };
+
+  async function sendForm(name, phone, email) {
+    console.log(name, '\n', phone, '\n' , email);
+    const data = JSON.stringify({
+      "Messages": [{
+        "From": {"Email": email, "Name": name},
+        "To": [{"Email": 'danila.s.anikin@gmail.com', "Name": 'Soroboom Praha'}],
+        "Subject": 'Soroboom form',
+        "TextPart": `"Name: ${name} \n Phone number: ${phone} \n Email: ${email}"`
+      }]
+    });
+
+    const config = {
+      method: 'post',
+      url: 'https://api.mailjet.com/v3.1/send',
+      data: data,
+      headers: {'Content-Type': 'application/json'},
+      auth: {username: 'beda647891789a0b751652e67f556108', password: 'e00806db18973c1ba4dd4a14545f21c4'},
+    };
+
+    return axios(config)
+      .then(function () {
+        const loc = window.location.pathname;
+        if(loc == '/') {
+          window.location.pathname = '/diky.html';
+        } else if (loc == '/ru.html') {
+          window.location.pathname = '/spasibo.html';
+        } else if (loc == '/uk.html') {
+          window.location.pathname = '/dyakuyemo.html';
+        } else if (loc == 'en.html') {
+          window.location.pathname = '/thankingPage.html';
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   GetCallButton1 = document.getElementById("formButton");  //getcallbtn1
   GetCallForm1 = document.getElementById("form");  //getcallform1
@@ -126,42 +184,3 @@ window.onload = function(){
     }else{ MobileMenuInside.style.display = "flex"; }
   };
 }
-
-async function sendForm(name, phone, email) {
-  console.log(name, '\n', phone, '\n' , email);
-  const data = JSON.stringify({
-    "Messages": [{
-      "From": {"Email": email, "Name": name},
-      "To": [{"Email": 'danila.s.anikin@gmail.com', "Name": 'Soroboom Praha'}],
-      "Subject": 'Soroboom form',
-      "TextPart": `"Name: ${name} \n Phone number: ${phone} \n Email: ${email}"`
-    }]
-  });
-
-  const config = {
-    method: 'post',
-    url: 'https://api.mailjet.com/v3.1/send',
-    data: data,
-    headers: {'Content-Type': 'application/json'},
-    auth: {username: 'beda647891789a0b751652e67f556108', password: 'e00806db18973c1ba4dd4a14545f21c4'},
-  };
-
-  return axios(config)
-    .then(function () {
-      const loc = window.location.pathname;
-      if(loc == '/') {
-        window.location.pathname = '/diky.html';
-      } else if (loc == '/ru.html') {
-        window.location.pathname = '/spasibo.html';
-      } else if (loc == '/uk.html') {
-        window.location.pathname = '/dyakuyemo.html';
-      } else if (loc == 'en.html') {
-        window.location.pathname = '/thankingPage.html';
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-}
-
