@@ -1,25 +1,30 @@
 
 window.onload = function(){
 
-  const SendFormBtn1 = document.getElementById('sendEmailBtn1');
-  const SendFormBtn2 = document.getElementById('sendEmailBtn2');
-  const SendFormBtn3 = document.getElementById('sendEmailBtn3');
-  const SendFormBtn4 = document.getElementById('sendEmailBtn4');
-  const SendFormBtn5 = document.getElementById('sendEmailBtn5');
+  SendFormBtn1 = document.getElementById("sendEmailBtn1");
+  SendFormBtn2 = document.getElementById('sendEmailBtn2');
+  SendFormBtn3 = document.getElementById('sendEmailBtn3');
+  SendFormBtn4 = document.getElementById('sendEmailBtn4');
+  SendFormBtn5 = document.getElementById('sendEmailBtn5');
 
   SendFormBtn1.onclick = function() {
+    console.log('sf1');
     sendForm(document.getElementById('senderName'), document.getElementById('senderPhone'), document.getElementById('senderEmail'));
   };
   SendFormBtn2.onclick = function() {
+    console.log('sf2');
     sendForm(document.getElementById('senderName2'), document.getElementById('senderPhone2'), document.getElementById('senderEmail2'));
   };
   SendFormBtn3.onclick = function() {
+    console.log('sf3');
     sendForm(document.getElementById('senderNam3'), document.getElementById('senderPhone3'), document.getElementById('senderEmail3'));
   };
   SendFormBtn4.onclick = function() {
+    console.log('sf4');
     sendForm(document.getElementById('senderNam4'), document.getElementById('senderPhone4'), document.getElementById('senderEmail4'));
   };
   SendFormBtn5.onclick = function() {
+    console.log('sf5');
     sendForm(document.getElementById('senderName5'), document.getElementById('senderPhone5'), document.getElementById('senderEmail5'));
   };
 
