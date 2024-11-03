@@ -1632,7 +1632,73 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
 
 </body>
 
+
 <script src="/src/customNew.js"></script>
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script type="text/javascript">
+
+  function sendEmail() {
+      
+    Email.send({
+
+      Host: "smtp.gmail.com",
+      Username : "soroboomcz@gmail.com",
+      Password : "SoroboomCZ2024",
+      To : 'ianikin2002@gmail.com',
+      From : "soroboomcz@gmail.com",
+      Subject : "Soroboom FORM",
+      Body : "Wow, form sent",
+
+    }).catch(function(error) {
+
+      alert("Error sending email: " + error);
+
+    })
+    .then(function (message) {
+
+      alert("Email successfully sent")
+
+      const loc = window.location.pathname;
+      if (loc === '/') {
+        window.location.pathname = '/diky.html';
+      } else if (loc === '/ru.html') {
+        window.location.pathname = '/spasibo.html';
+      } else if (loc === '/uk.html') {
+        window.location.pathname = '/dyakuyemo.html';
+      } else if (loc === '/en.html') {
+        window.location.pathname = '/thankingPage.html';
+      }
+    });   
+    
+
+    // smtp.elasticemail.com
+    // Email.send({
+    //   Host : "smtp.elasticemail.com",
+    //   Username : "username",
+    //   Password : "password",
+    //   To : 'them@website.com',
+    //   From : "you@isp.com",
+    //   Subject : "This is the subject",
+    //   Body : "And this is the body"
+    // }).then(
+    //   message => alert(message)
+    // );
+    
+
+  }
+    
+    document.getElementById("sendEmailBtn1").addEventListener("click", () => sendEmail());
+    document.getElementById("sendEmailBtn2").addEventListener("click", () => sendEmail());
+    document.getElementById("sendEmailBtn3").addEventListener("click", () => sendEmail());
+    document.getElementById("sendEmailBtn4").addEventListener("click", () => sendEmail());
+    document.getElementById("sendEmailBtn5").addEventListener("click", () => sendEmail());
+
+
+</script>
+
+<!-- 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 
@@ -1667,15 +1733,9 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
           window.location.pathname = '/thankingPage.html';
         }
       }, (error) => {
-        console.error('Failed to send email:', error);
+        console.log("Error sending mail");
       });
   }
-
-  // document.getElementById("sendEmailBtn1").addEventListener("click", sendForm(1));
-  // document.getElementById("sendEmailBtn2").addEventListener("click", sendForm(2));
-  // document.getElementById("sendEmailBtn3").addEventListener("click", sendForm(3));
-  // document.getElementById("sendEmailBtn4").addEventListener("click", sendForm(4));
-  // document.getElementById("sendEmailBtn5").addEventListener("click", sendForm(5));
 
   document.getElementById("sendEmailBtn1").addEventListener("click", () => sendForm(1));
   document.getElementById("sendEmailBtn2").addEventListener("click", () => sendForm(2));
@@ -1683,6 +1743,50 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
   document.getElementById("sendEmailBtn4").addEventListener("click", () => sendForm(4));
   document.getElementById("sendEmailBtn5").addEventListener("click", () => sendForm(5));
 
+</script> -->
 
-</script>
+<!-- 
+    // function sendEmail() {
+
+      
+    //   Email.send({
+    //     Host : "smtp.elasticemail.com", //smtp.elasticemail.com
+    //     Username : "username",
+    //     Password : "password",
+    //     To : 'them@website.com',
+    //     From : "you@isp.com",
+    //     Subject : "This is the subject",
+    //     Body : "And this is the body"
+    //   }).then(
+    //     message => alert(message)
+    //   );
+
+    //     Email.send({
+    //     SecureToken : "",
+    //     To : 'danila.s.anikin@gmail.com',
+    //     From : "ianikin2002@gmail.com",
+    //     Subject: "Testing Email using javascript",
+    //     Body: "If you are reading this, dont forget to applaud"
+    //   })
+    //   .catch(function(error) {
+    //     alert("Error sending email: " + error);
+    //   })
+    //   .then(function (message) {
+    //     alert("Email successfully sent")
+
+    //     const loc = window.location.pathname;
+    //     if (loc === '/') {
+    //       window.location.pathname = '/diky.html';
+    //     } else if (loc === '/ru.html') {
+    //       window.location.pathname = '/spasibo.html';
+    //     } else if (loc === '/uk.html') {
+    //       window.location.pathname = '/dyakuyemo.html';
+    //     } else if (loc === '/en.html') {
+    //       window.location.pathname = '/thankingPage.html';
+    //     }
+    //   });
+    // }
+
+</script> -->
+
 </html>
