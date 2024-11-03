@@ -1636,11 +1636,6 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 
-  document.getElementById("sendEmailBtn1").addEventListener("click", sendForm(1));
-  document.getElementById("sendEmailBtn2").addEventListener("click", sendForm(2));
-  document.getElementById("sendEmailBtn3").addEventListener("click", sendForm(3));
-  document.getElementById("sendEmailBtn4").addEventListener("click", sendForm(4));
-  document.getElementById("sendEmailBtn5").addEventListener("click", sendForm(5));
   async function sendForm(elementId) {
     const name = document.getElementById(`senderName${elementId}`).value;
     const phone = document.getElementById(`senderPhone${elementId}`).value;
@@ -1657,6 +1652,8 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
     };
 
     emailjs.init('aTw_1BbE78xC4w4rB');
+
+
     emailjs.send(serviceID, templateID, templateParams)
       .then(() => {
         const loc = window.location.pathname;
@@ -1673,5 +1670,12 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
         console.error('Failed to send email:', error);
       });
   }
+
+  document.getElementById("sendEmailBtn1").addEventListener("click", sendForm(1));
+  document.getElementById("sendEmailBtn2").addEventListener("click", sendForm(2));
+  document.getElementById("sendEmailBtn3").addEventListener("click", sendForm(3));
+  document.getElementById("sendEmailBtn4").addEventListener("click", sendForm(4));
+  document.getElementById("sendEmailBtn5").addEventListener("click", sendForm(5));
+
 </script>
 </html>
