@@ -1590,8 +1590,10 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
 
   gtag('config', 'G-J3044SPZRP');
 </script>
-
 <!-- Yandex.Metrika counter -->
+
+
+<!-- 
 <script type="text/javascript" >
   (function(m,e,t,r,i,k,a){m[i]=m[i]function(){(m[i].a=m[i].a[]).push(arguments)};
   m[i].l=1*new Date();
@@ -1608,7 +1610,7 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
 </script>
 <noscript>
   <div><img src="https://mc.yandex.ru/watch/98587878" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+/Yandex.Metrika counter -->
 
 </head>
 <body>
@@ -1641,22 +1643,33 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
 
   function sendEmail() {
       
-    Email.send({
 
+    // smtp.elasticemail.com
+    // Email.send({
+    //   Host : "smtp.elasticemail.com",
+    //   Username : "ianikin2002@gmail.com",
+    //   Password : "D92FD05DF307F2BCD4635BFFE451BEE04A16",
+    //   To : 'danakin1050@gmail.com',
+    //   From : "ianikin2002@gmail.com",
+    //   Subject : "This is the subject",
+    //   Body : "And this is the body"
+
+    Email.send({
       Host: "smtp.gmail.com",
       Username : "soroboomcz@gmail.com",
       Password : "SoroboomCZ2024",
       To : 'ianikin2002@gmail.com',
       From : "soroboomcz@gmail.com",
       Subject : "Soroboom FORM",
-      Body : "Wow, form sent",
-
+      Body : "Wow, form sent"
     }).catch(function(error) {
-
+      console.log(error);
       alert("Error sending email: " + error);
 
     })
     .then(function (message) {
+
+      console.log(message)
 
       alert("Email successfully sent")
 
@@ -1670,8 +1683,18 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
       } else if (loc === '/en.html') {
         window.location.pathname = '/thankingPage.html';
       }
-    });   
+    }); 
     
+    document.getElementById("sendEmailBtn1").addEventListener("click", () => sendEmail());
+    document.getElementById("sendEmailBtn2").addEventListener("click", () => sendEmail());
+    document.getElementById("sendEmailBtn3").addEventListener("click", () => sendEmail());
+    document.getElementById("sendEmailBtn4").addEventListener("click", () => sendEmail());
+    document.getElementById("sendEmailBtn5").addEventListener("click", () => sendEmail());
+
+</script>
+
+<!-- 
+
 
     // smtp.elasticemail.com
     // Email.send({
@@ -1687,18 +1710,7 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
     // );
     
 
-  }
-    
-    document.getElementById("sendEmailBtn1").addEventListener("click", () => sendEmail());
-    document.getElementById("sendEmailBtn2").addEventListener("click", () => sendEmail());
-    document.getElementById("sendEmailBtn3").addEventListener("click", () => sendEmail());
-    document.getElementById("sendEmailBtn4").addEventListener("click", () => sendEmail());
-    document.getElementById("sendEmailBtn5").addEventListener("click", () => sendEmail());
 
-
-</script>
-
-<!-- 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 
