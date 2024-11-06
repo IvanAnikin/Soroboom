@@ -1648,10 +1648,6 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
     })
 
     .then(function (message) {
-
-      console.log(message);
-      alert("Email successfully sent");
-
       const loc = window.location.pathname;
       if (loc === '/') {
         window.location.pathname = '/diky.html';
@@ -1659,7 +1655,7 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
         window.location.pathname = '/spasibo.html';
       } else if (loc === '/uk.html') {
         window.location.pathname = '/dyakuyemo.html';
-      } else if (loc === '/en.html') {
+      } else {
         window.location.pathname = '/thankingPage.html';
       }
     });
