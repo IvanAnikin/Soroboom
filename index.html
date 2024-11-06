@@ -1639,9 +1639,12 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
 <script src="https://smtpjs.com/v3/smtp.js"></script>
 
 <script type="text/javascript">
-
-  function sendEmail() {
   
+  function sendEmail(el) {
+  
+    const email = document.getElementById(`senderEmail${el}`);
+    const phone = document.getElementById(`senderPhone${el}`);
+    const name = document.getElementById(`senderName${el}`);
 
     fetch("https://submit-form.com/qC6Xv3v7v", {
       method: "POST",
@@ -1650,7 +1653,11 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
         Accept: "application/json",
       },
       body: JSON.stringify({
-        message: "Hello, World",
+        message: "Soroboom form submitted",
+        mail: email,
+        phone: phone,
+        name: name,
+
       }),
     })
 
@@ -1680,14 +1687,13 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
 
   
   }
-
-    
-    document.getElementById("sendEmailBtn1").addEventListener("click", () => sendEmail());
-    document.getElementById("sendEmailBtn2").addEventListener("click", () => sendEmail());
-    document.getElementById("sendEmailBtn3").addEventListener("click", () => sendEmail());
-    document.getElementById("sendEmailBtn4").addEventListener("click", () => sendEmail());
-    document.getElementById("sendEmailBtn5").addEventListener("click", () => sendEmail());
+        
+  document.getElementById("sendEmailBtn1").addEventListener("click", () => sendEmail(1));
+  document.getElementById("sendEmailBtn2").addEventListener("click", () => sendEmail(2));
+  document.getElementById("sendEmailBtn3").addEventListener("click", () => sendEmail(3));
+  document.getElementById("sendEmailBtn4").addEventListener("click", () => sendEmail(4));
+  document.getElementById("sendEmailBtn5").addEventListener("click", () => sendEmail(5));
 
 </script>
 
-</html>			
+</html>
