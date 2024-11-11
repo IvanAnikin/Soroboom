@@ -1632,16 +1632,15 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
 </body>
 
 <script src="/src/customNew.js"></script>
-<!-- <script type="text/javascript">
-  
-  function sendEmail(el) {
-  
-    const email = document.getElementById(`senderEmail${el}UK`);
-    const phone = document.getElementById(`senderPhone${el}UK`);
-    const name = document.getElementById(`senderName${el}UK`);
 
-    console.log(email, '\n', phone, '\n' , name)
-    return;
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script type="text/javascript">
+  function sendEmail(formId) {
+    const email = document.getElementById(`senderEmail${formId}`).value;
+    const phone = document.getElementById(`senderPhone${formId}`).value;
+    const name = document.getElementById(`senderName${formId}`).value;
+
     fetch("https://submit-form.com/qC6Xv3v7v", {
       method: "POST",
       headers: {
@@ -1653,41 +1652,40 @@ background: linear-gradient(180deg, rgba(8, 255, 0, 0) 0%, rgba(8, 255, 0, 0.08)
         mail: email,
         phone: phone,
         name: name,
-
       }),
     })
-
-    .catch(function(error) {
+    .then(response => {
+      if (response.ok) {
+        alert("Email successfully sent");
+        
+        const loc = window.location.pathname;
+        if (loc === '/') {
+          window.location.pathname = '/diky.html';
+        } else if (loc === '/ru.html') {
+          window.location.pathname = '/spasibo.html';
+        } else if (loc === '/uk.html') {
+          window.location.pathname = '/dyakuyemo.html';
+        } else {
+          window.location.pathname = '/thankingPage.html';
+        }
+      } else {
+        throw new Error("Failed to send email");
+      }
+    })
+    .catch(error => {
       console.log(error);
       alert("Error sending email: " + error);
-    })
-
-    .then(function (message) {
-
-      console.log(message);
-      alert("Email successfully sent");
-
-      const loc = window.location.pathname;
-      if (loc === '/') {
-        window.location.pathname = '/diky.html';
-      } else if (loc === '/ru.html') {
-        window.location.pathname = '/spasibo.html';
-      } else if (loc === '/uk.html') {
-        window.location.pathname = '/dyakuyemo.html';
-      } else {
-        window.location.pathname = '/thankingPage.html';
-      }
-    });  
-
-  
+    });
   }
-        
-  document.getElementById("sendEmailBtn1").addEventListener("click", () => sendEmail(1));
-  document.getElementById("sendEmailBtn2").addEventListener("click", () => sendEmail(2));
-  document.getElementById("sendEmailBtn3").addEventListener("click", () => sendEmail(3));
-  document.getElementById("sendEmailBtn4").addEventListener("click", () => sendEmail(4));
-  document.getElementById("sendEmailBtn5").addEventListener("click", () => sendEmail(5));
 
-</script> -->
+  // Dynamically add click listeners to buttons with ID pattern `sendEmailBtnX`
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll("[id^='sendEmailBtn']");
+    buttons.forEach(button => {
+      const formId = button.id.replace("sendEmailBtn", ""); // Get form ID number from button ID
+      button.addEventListener("click", () => sendEmail(formId));
+    });
+  });
+</script>
 
 </html>
